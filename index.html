@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ProudMe</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -23,20 +26,20 @@
             </div>
             <div class="field">
                 <label for="goals">What are your goals?</label>
-                <small>Pick 3-4 goals. More that that can make it harder to focus.</small>
+                <small>One goal per line. Add as many as you need, but fewer goals means more focus.Pick 3-4 goals.</small>
                 <textarea id="goals" required placeholder="one goal per line"></textarea>
             </div>
             <div class="field">
-                <label for="start-date">"When do you start?"</label>
+                <label for="start-date">When do you start?</label>
                 <input type="date" id="start-date" required>
             </div>
             <div class="field">
-                <label for="end-date">"When does it end?"</label>
+                <label for="end-date">When does it end?</label>
                 <small>Six months(around 180 days) is a good length to build consistency</small>
                 <input type="date" id="end-date" required>
             </div>
             <div class="field">
-                <label for="letter">"Write a letter to yourself for the day you want to quit."</label>
+                <label for="letter">Write a letter to yourself for the day you want to quit.</label>
                 <textarea id="letter" required></textarea>
             </div>
 
@@ -55,7 +58,7 @@
             </ul>
             <p>Why goes here</p>
         </header>
-        <p id="quote">Your're one win away.</p>
+        <p id="quote">You're one win away.</p>
 
         <div id="top-bar">
             <div id="date">Date and time goes here</div>
@@ -75,8 +78,9 @@
             <div id="entries-list"></div>
         </section>
 
-        <details>
+        <details id="letter-box">
             <summary>Open when you want to quit</summary>
+            <p id="miss-message"></p>
             <p id="letter-text">Your letter goes here</p>
         </details>
     </section>
