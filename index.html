@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ProudMe</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -56,21 +57,30 @@
         </header>
         <p id="quote">Your're one win away.</p>
 
-        <div id="date">Date and time goes here</div>
-        <div id="days-left">
-            Days left: 180
+        <div id="top-bar">
+            <div id="date">Date and time goes here</div>
+            <div id="days-left">
+                <span id="days-number">180</span> days left
+            </div>
         </div>
 
-        <section>
+        <section id="today">
             <h2>Today</h2>
-            <textarea placeholder="Write about your day, short, long, in points doesn't matter all that matters is you were here and making progress..."></textarea>
-            <button type="button">Save</button>
+            <textarea id="entry" placeholder="Write about your day, short, long, in points doesn't matter all that matters is you were here and making progress..."></textarea>
+            <button type="button" id="save-entry">Save</button>
         </section>
 
-        <section>
+        <section id="past">
             <h2>Previous Entries</h2>
+            <div id="entries-list"></div>
         </section>
+
+        <details>
+            <summary>Open when you want to quit</summary>
+            <p id="letter-text">Your letter goes here</p>
+        </details>
     </section>
     
+<script src="script.js"></script>
 </body>
 </html>
