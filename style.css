@@ -1,0 +1,22 @@
+:root{
+    --bg:#151412;
+    --panel:#1f1d1a;
+    --line:#3a3631;
+    --text:#ece6d8;
+    --soft:#9a9283;
+    --orange:#e8501f;
+    color-scheme:dark;
+}
+*{
+    box-sizing: border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    background-color:var(--bg);
+    color:var(--text);
+    font-family:'IBM Plex Mono',monospace;
+    font-size:16px;
+    line-height: 1.6;
+}
