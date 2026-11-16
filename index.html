@@ -10,18 +10,27 @@
     <section id="onboarding">
         <h1>ProudMe</h1>
         <p>Make Yourself Proud</p>
+
         <form>
             <label for="why">Why do you want to do this?</label>
             <textarea id="why"></textarea>
 
-            <label for="goals">What are your goals?(3-4 goals is good instead of heaving so many goal that will make you keep juggling between everything)</label>
-            <textarea id="goals"></textarea>
+            <label for="feeling">How do you feel about your current situation?</label>
+            <textarea id="feeling"></textarea>
 
-            <label for="start-date">"When do you want to start? Or When did you start?"</label>
+            <label for="goals">What are your goals?</label>
+            <small>Pick 3-4 goals. Mor that that can make it harder to focus.</small>
+            <textarea id="goals" placeholder="one goal per line"></textarea>
+
+            <label for="start-date">"When do you start?"</label>
             <input type="date" id="start-date">
 
-            <label for="end-date">"When do you want to end (I suggest 6 months)"</label>
+            <label for="end-date">"When does it end?"</label>
+            <small>Six months(around 180 days) is a good length to build consistency</small>
             <input type="date" id="end-date">
+
+            <label for="letter">"Write a letter to yourself for the day you want to quit."</label>
+            <textarea id="letter"></textarea>
 
             <button type="submit">Submit</button>
         </form>
