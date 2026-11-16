@@ -33,3 +33,42 @@ h1, h2{
     text-transform: uppercase;
     letter-spacing: 1px;
 }
+h1{
+    font-size:5rem;
+    line-height: 1;
+}
+h2{
+    font-size:1.5rem;
+    color:var(--soft);
+}
+
+.field {margin-bottom: 32px;}
+
+label{
+    display:block;
+    font-weight: 600;
+    margin-bottom:6px;
+}
+
+small{
+    display:block;
+    color:var(--soft);
+    margin-bottom:8px;
+}
+
+textarea, input {
+    width: 100%;
+    background-color: var(--panel);
+    color: var(--text);
+    border: 1px solid var(--line);
+    padding: 12px;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+textarea{min-height: 110px;}
+textarea:focus, input:focus{
+    outline:none;
+    border-color:var(--orange);
+}
+
