@@ -63,6 +63,14 @@ function showDaysLeft() {
 function getToday(){
     return new Date().toLocaleDateString("en-CA");
 }
+function formatDate(dateText){
+    return new Date(dateText + "T00:00:00").toLocaleDateString("en-IN",{
+        weekday:"short",
+        day:"numeric",
+        month:"short",
+        year:"numeric"
+    });
+}
 function getEntries(){
     const savedEntries = localStorage.getItem("entries");
     if(savedEntries === null){
@@ -144,12 +152,7 @@ function showEntries(){
             const entryText = document.createElement("p");
             entryText.className = "entry-text";
 
-            entryDate.textContent = new Date(savedEntry.date + "T00:00:00").toLocaleDateString("en-IN",{
-                weekday: "short",
-                day:"numeric",
-                month: "short",
-                year: "numeric"
-            });
+            entryDate.textContent = formatDate(savedEntry.date);
             entryText.textContent = savedEntry.text;
             entryDiv.appendChild(entryDate);
             entryDiv.appendChild(entryText);
