@@ -82,9 +82,8 @@ button{
     letter-spacing: 1px;
     text-transform: uppercase;
     cursor:pointer;
-    border-radius: 12px;
 }
-button:hover{color: var(--text);}
+button:hover{background-color: var(--text);}
 
 ul{list-style: none;}
 li{
@@ -148,3 +147,10 @@ summary{
     font-weight: 600;
     margin: 12px 0;
 }
+
+#onboarding p{
+    color:var(--soft);
+    margin-top:8px;
+    margin-bottom:50px;
+}
+
