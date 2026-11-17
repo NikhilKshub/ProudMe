@@ -110,8 +110,41 @@ header p{
 #top-bar{
     display:flex;
     justify-content: space-between;
-    align-items:flex;
+    align-items:flex-end;
     padding:24px 0;
     border-top:1px solid var(--line);
     border-bottom:1px solid var(--line);
+}
+#date{color:var(--soft);}
+#days-number{
+    font-family: 'Anton',sans-serif;
+    font-size:5rem;
+    line-height: 1;
+    color:var(--orange);
+}
+#days-left{text-align: right;}
+#today, #past {margin-top: 48px;}
+
+#today textarea{
+    min-height: 180px;
+    display:block;
+    margin-bottom:16px;
+}
+
+details{
+    border: 1px solid var(--line);
+    padding:16px;
+    margin-top:48px;
+}
+
+summary{
+    cursor:pointer;
+    color:var(--orange);
+    font-weight:600;
+}
+
+#miss-message{
+    color:var(--orange);
+    font-weight: 600;
+    margin: 12px 0;
 }
