@@ -10,8 +10,27 @@ function showCorrectScreen(){
     } else {
         onboardingScreen.classList.add("hidden");
         homeScreen.classList.remove("hidden");
+        fillHome();
     }
 }
+
+function fillHome(){
+    const whyText = document.getElementById("why-text");
+    const goalsList = document.getElementById("goals-list");
+    whyText.textContent = localStorage.getItem("why");
+    const goals = localStorage.getItem("goals").split("\n");
+    goalsList.innerHTML = "";
+
+    for(const line of goals){
+        if(line.trim() !== ""){
+            const li = document.createElement("li");
+            li.textContent = line;
+            goalsList.appendChild(li);
+        }
+    }
+}
+
+
 showCorrectScreen();
 
 form.addEventListener("submit", function (event) {
@@ -25,3 +44,4 @@ form.addEventListener("submit", function (event) {
 
     showCorrectScreen();
 });
+
