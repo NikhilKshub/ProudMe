@@ -30,6 +30,20 @@ function fillHome(){
     }
 }
 
+function showDate() {
+    const now = new Date();
+    const date = now.toLocaleDateString("en-IN", {
+        weekday: "long",
+        day: "numeric",
+        month: "long"
+    });
+    const time = now.toLocaleTimeString("en-IN", {
+        hour: "2-digit",
+        minute: "2-digit"
+    });
+    document.getElementById("date").textContent = date + " · " + time;
+}
+
 
 showCorrectScreen();
 
@@ -45,3 +59,5 @@ form.addEventListener("submit", function (event) {
     showCorrectScreen();
 });
 
+showDate();
+setInterval(showDate,30000);
