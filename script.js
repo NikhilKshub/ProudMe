@@ -1,6 +1,9 @@
 const onboardingScreen = document.getElementById("onboarding");
 const homeScreen = document.getElementById("home");
 const form = document.querySelector("form");
+const saveButton = document.getElementById("save-entry");
+const entry = document.getElementById("entry");
+
 
 
 function showCorrectScreen(){
@@ -29,6 +32,7 @@ function fillHome(){
         }
     }
     showDaysLeft();
+    showTodaysEntry();
 }
 
 function showDate() {
@@ -81,6 +85,41 @@ form.addEventListener("submit", function (event) {
 
     showCorrectScreen();
 });
+
+
+saveButton.addEventListener("click", function(){
+    const text = entry.value.trim();
+    if(text === ""){
+        return;
+    }
+    const list = getEntries();
+    const today = getToday();
+    const todayEntry = list.find(function(savedEntry){
+        return savedEntry.date === today;
+    });
+    if(todayEntry){
+        todayEntry.text = text;
+    } else {
+        list.push({date: today, text: text});
+    }
+    saveEntries(list);
+    saveButton.textContent = "Saved";
+    setTimeout(function(){
+        saveButton.textContent = "Save";
+    },1500);
+});
+
+function showTodayEntry(){
+    const list = getEntries();
+    const today = getToday();
+    const todayEntry = list.find(function(savedEntry){
+        return savedEntry.date === today;
+    });
+    if(todayEntry){
+        entry.value = todayEntry.text;
+    }
+}
+
 
 showDate();
 setInterval(showDate,30000);
