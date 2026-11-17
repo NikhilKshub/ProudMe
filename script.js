@@ -54,6 +54,20 @@ function showDaysLeft() {
     document.getElementById("days-number").textContent = Math.max(0, days);
 }
 
+function getToday(){
+    return new Date().toLocaleDateString("en-CA");
+}
+function getEntries(){
+    const savedEntries = localStorage.getItem("entries");
+    if(savedEntries === null){
+        return [];
+    }
+    return JSON.parse(savedEntries);
+}
+function saveEntries(list){
+    localStorage.setItem("entries",JSON.stringify(list));
+}
+
 showCorrectScreen();
 
 form.addEventListener("submit", function (event) {
