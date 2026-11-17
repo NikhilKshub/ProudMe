@@ -3,8 +3,9 @@ const homeScreen = document.getElementById("home");
 const form = document.querySelector("form");
 const saveButton = document.getElementById("save-entry");
 const entry = document.getElementById("entry");
-
-
+const todayTitle = document.getElementById("today-title");
+const cancelButton = document.getElementById("cancel-edit");
+let editingDate = null;
 
 function showCorrectScreen(){
     if(localStorage.getItem("why") === null){
