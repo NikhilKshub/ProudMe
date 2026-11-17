@@ -28,6 +28,7 @@ function fillHome(){
             goalsList.appendChild(li);
         }
     }
+    showDaysLeft();
 }
 
 function showDate() {
@@ -44,6 +45,14 @@ function showDate() {
     document.getElementById("date").textContent = date + " · " + time;
 }
 
+function showDaysLeft() {
+    const savedEndDate = localStorage.getItem("endDate");
+    const endDate = new Date(savedEndDate + "T00:00:00");
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const days = Math.round((endDate - today) / (1000 * 60 * 60 * 24));
+    document.getElementById("days-number").textContent = Math.max(0, days);
+}
 
 showCorrectScreen();
 
