@@ -72,3 +72,46 @@ textarea:focus, input:focus{
     border-color:var(--orange);
 }
 
+button{
+    background-color:var(--orange);
+    color:var(--bg);
+    border:none;
+    padding:12px 28px;
+    font-family: 'Anton',sans-serif;
+    font-size:1.2rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor:pointer;
+    border-radius: 12px;
+}
+button:hover{color: var(--text);}
+
+ul{list-style: none;}
+li{
+    font-family:'Anton',sans-serif;
+    font-size:2rem;
+    text-transform: uppercase;
+    padding: 10px 0;
+    border-bottom:1px solid var(--line);
+}
+
+header p{
+    border-left: 3px solid var(--orange);
+    padding-left:16px;
+    margin-top:24px;
+    color:var(--soft);
+}
+#quote{
+    color:var(--orange);
+    font-weight: 600;
+    margin:32px 0;
+}
+
+#top-bar{
+    display:flex;
+    justify-content: space-between;
+    align-items:flex;
+    padding:24px 0;
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+}
