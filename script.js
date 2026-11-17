@@ -33,6 +33,7 @@ function fillHome(){
     }
     showDaysLeft();
     showTodaysEntry();
+    showEntries();
 }
 
 function showDate() {
@@ -103,13 +104,14 @@ saveButton.addEventListener("click", function(){
         list.push({date: today, text: text});
     }
     saveEntries(list);
+    showEntries();
     saveButton.textContent = "Saved";
     setTimeout(function(){
         saveButton.textContent = "Save";
     },1500);
 });
 
-function showTodayEntry(){
+function showTodaysEntry(){
     const list = getEntries();
     const today = getToday();
     const todayEntry = list.find(function(savedEntry){
@@ -120,6 +122,44 @@ function showTodayEntry(){
     }
 }
 
+
+function showEntries(){
+    const entriesList = document.getElementById("entries-list");
+    entriesList.innerHTML = "";
+    const list = getEntries();
+    list.reverse();
+
+    let shown = 0;
+    const today = getToday();
+
+    for(const savedEntry of list){
+        if(savedEntry.date !== today){
+            const entryDiv = document.createElement("div");
+            entryDiv.className = "entry";
+
+            const entryDate = document.createElement("p");
+            entryDate.className = "entry-date";
+
+            const entryText = document.createElement("p");
+            entryText.className = "entry-text";
+
+            entryDate.textContent = new Date(savedEntry.date + "T00:00:00").toLocaleDateString("en-IN",{
+                weekday: "short",
+                day:"numeric",
+                month: "short",
+                year: "numeric"
+            });
+            entryText.textContent = savedEntry.text;
+            entryDiv.appendChild(entryDate);
+            entryDiv.appendChild(entryText);
+            entriesList.appendChild(entryDiv);
+            shown++;
+        }
+    }
+    if(shown === 0){
+        entriesList.textContent = "Nothing here yet. Tomorrow this fills up."
+    }
+}
 
 showDate();
 setInterval(showDate,30000);
