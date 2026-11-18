@@ -16,6 +16,8 @@ const quotes = [
     "Aut viam inveniam aut faciam (I will either find a way or make one.)",
     "Audentes fortuna iuvat (Fortune favors the bold.)"
 ]
+const letterBox = document.getElementById("letter-box");
+const missMessage = document.getElementById("miss-message");
 
 function showCorrectScreen(){
     if(localStorage.getItem("why") === null){
@@ -32,6 +34,7 @@ function fillHome(){
     const whyText = document.getElementById("why-text");
     const goalsList = document.getElementById("goals-list");
     whyText.textContent = localStorage.getItem("why");
+    document.getElementById("letter-text").textContent = localStorage.getItem("letter");
     const goals = localStorage.getItem("goals").split("\n");
     goalsList.innerHTML = "";
 
@@ -45,6 +48,7 @@ function fillHome(){
     showDaysLeft();
     showEntries();
     showQuote();
+    showMissMessage();
 }
 
 function showQuote(){
@@ -207,6 +211,29 @@ function showEntries(){
         entriesList.textContent = "Nothing here yet. Write your first entry above.";
     }
 }
+
+function showMissMessage(){
+    const list = getEntries();
+    let referenceDate;
+    if(list.length > 0){
+        referenceDate = new Date(list[list.length - 1].date + "T00:00:00");
+    } else{
+        referenceDate = new Date(localStorage.getItem("startDate") + "T00:00:00");
+    }
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const daysPassed = Math.round((today - referenceDate) / (1000 * 60 * 60 * 24));
+    const daysMissed = daysPassed - 1;
+    if(daysMissed >=2 ){
+        missMessage.textContent = "One missed day is a mistake. Two is a choice.";
+        letterBox.open = true;
+    } else {
+        missMessage.textContent = "";
+        letterBox.open = false;
+    }
+
+}
+
 
 showDate();
 setInterval(showDate,30000);
