@@ -118,6 +118,19 @@ function saveEntries(list){
     localStorage.setItem("entries",JSON.stringify(list));
 }
 
+function getBackupText() {
+    const backup = {
+        why: localStorage.getItem("why"),
+        feeling: localStorage.getItem("feeling"),
+        goals: localStorage.getItem("goals"),
+        startDate: localStorage.getItem("startDate"),
+        endDate: localStorage.getItem("endDate"),
+        letter: localStorage.getItem("letter"),
+        entries: getEntries()
+    };
+    return JSON.stringify(backup, null, 2);
+}
+
 showCorrectScreen();
 
 form.addEventListener("submit", function (event) {

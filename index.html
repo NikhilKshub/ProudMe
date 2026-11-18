@@ -15,6 +15,11 @@
         <h1>ProudMe</h1>
         <p>Make Yourself Proud</p>
 
+        <div id="restore-box">
+            <label for="import-file">Already have a backup file? Restore it here.</label>
+            <input type="file" id="import-file" accept=".json">
+        </div>
+
         <form>
             <div class="field">
                 <label for="why">Why do you want to do this?</label>
@@ -84,6 +89,12 @@
             <p id="miss-message"></p>
             <p id="letter-text">Your letter goes here</p>
         </details>
+
+        <section id="backup">
+            <h2>Backup</h2>
+            <small>Save this file outside this computer, like in Google Drive.</small>
+            <button type="button" id="export-button">Download backup</button>
+        </section>
     </section>
     
 <script src="script.js"></script>

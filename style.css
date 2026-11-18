@@ -198,3 +198,13 @@ summary{
     white-space: pre-wrap;
 }
 #letter-text {white-space: pre-wrap;}
+
+#restore-box {margin-bottom: 40px;}
+#backup{margin-top: 48px;}
+
+input[type="file"] {
+    width: auto;
+    border: none;
+    padding: 0;
+    background: none;
+}
