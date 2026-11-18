@@ -168,7 +168,7 @@ function showEntries(){
 
         const editButton = document.createElement("button");
         editButton.className = "edit-button";
-        editButton.textContent = "Edit";
+        editButton.textContent = "edit";
         entryDate.textContent = formatDate(savedEntry.date);
 
         if(savedEntry.date === today){

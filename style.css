@@ -154,3 +154,30 @@ summary{
 }
 
 .hidden{display:none;}
+
+.entry-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.edit-button, #cancel-edit {
+    background: none;
+    color: var(--soft);
+    cursor: pointer;
+}
+
+.edit-button{
+    font-family:inherit;
+    font-size:0.9rem;
+    padding:2px 12px;
+    text-transform: none;
+    letter-spacing: 0;
+}
+#cancel-edit{margin-left:12px;}
+
+.edit-button:hover, #cancel-edit:hover {
+    background: none;
+    color: var(--orange);
+    text-decoration:underline;
+}
