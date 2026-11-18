@@ -18,6 +18,7 @@ const quotes = [
 ]
 const letterBox = document.getElementById("letter-box");
 const missMessage = document.getElementById("miss-message");
+const exportButton = document.getElementById("export-button");
 
 function showCorrectScreen(){
     if(localStorage.getItem("why") === null){
@@ -131,6 +132,15 @@ function getBackupText() {
     return JSON.stringify(backup, null, 2);
 }
 
+function downloadBackup() {
+    const text = getBackupText();
+    const file = new Blob([text], { type: "application/json" });
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(file);
+    link.download = "proudme-backup-" + getToday() + ".json";
+    link.click();
+}
+
 showCorrectScreen();
 
 form.addEventListener("submit", function (event) {
@@ -178,6 +188,7 @@ saveButton.addEventListener("click",function(){
 
 
 cancelButton.addEventListener("click", stopEditing);
+exportButton.addEventListener("click",downloadBackup);
 
 function showEntries(){
     const entriesList = document.getElementById("entries-list");
