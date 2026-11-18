@@ -33,7 +33,6 @@ function fillHome(){
         }
     }
     showDaysLeft();
-    showTodaysEntry();
     showEntries();
 }
 
@@ -146,48 +145,46 @@ saveButton.addEventListener("click",function(){
 
 cancelButton.addEventListener("click", stopEditing);
 
-function showTodaysEntry(){
-    const list = getEntries();
-    const today = getToday();
-    const todayEntry = list.find(function(savedEntry){
-        return savedEntry.date === today;
-    });
-    if(todayEntry){
-        entry.value = todayEntry.text;
-    }
-}
-
-
 function showEntries(){
     const entriesList = document.getElementById("entries-list");
     entriesList.innerHTML = "";
     const list = getEntries();
     list.reverse();
-
     let shown = 0;
     const today = getToday();
 
     for(const savedEntry of list){
-        if(savedEntry.date !== today){
-            const entryDiv = document.createElement("div");
-            entryDiv.className = "entry";
+        const entryDiv = document.createElement("div");
+        entryDiv.className = "entry";
 
-            const entryDate = document.createElement("p");
-            entryDate.className = "entry-date";
+        const entryTop = document.createElement("div");
+        entryTop.className = "entry-top";
 
-            const entryText = document.createElement("p");
-            entryText.className = "entry-text";
+        const entryDate = document.createElement("p");
+        entryDate.className = "entry-date";
 
-            entryDate.textContent = formatDate(savedEntry.date);
-            entryText.textContent = savedEntry.text;
-            entryDiv.appendChild(entryDate);
-            entryDiv.appendChild(entryText);
-            entriesList.appendChild(entryDiv);
-            shown++;
+        const entryText = document.createElement("p");
+        entryText.className = "entry-text";
+
+        const editButton = document.createElement("button");
+        editButton.className = "edit-button";
+        editButton.textContent = "Edit";
+        entryDate.textContent = formatDate(savedEntry.date);
+
+        if(savedEntry.date === today){
+            entryDate.textContent = "Today . " + entryDate.textContent;
         }
-    }
-    if(shown === 0){
-        entriesList.textContent = "Nothing here yet. Tomorrow this fills up."
+        entryText.textContent = savedEntry.text;
+        editButton.addEventListener("click", function(){
+            startEditing(savedEntry);
+        });
+
+        entryTop.appendChild(entryDate);
+        entryTop.appendChild(editButton);
+        entryDiv.appendChild(entryTop);
+        entryDiv.appendChild(entryText);
+        entriesList.appendChild(entryDiv);
+        shown++;
     }
 }
 
