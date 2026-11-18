@@ -172,7 +172,7 @@ function showEntries(){
         entryDate.textContent = formatDate(savedEntry.date);
 
         if(savedEntry.date === today){
-            entryDate.textContent = "Today . " + entryDate.textContent;
+            entryDate.textContent = "Today · " + entryDate.textContent;
         }
         entryText.textContent = savedEntry.text;
         editButton.addEventListener("click", function(){
@@ -185,6 +185,9 @@ function showEntries(){
         entryDiv.appendChild(entryText);
         entriesList.appendChild(entryDiv);
         shown++;
+    }
+    if (shown === 0) {
+        entriesList.textContent = "Nothing here yet. Write your first entry above.";
     }
 }
 
