@@ -6,6 +6,16 @@ const entry = document.getElementById("entry");
 const todayTitle = document.getElementById("today-title");
 const cancelButton = document.getElementById("cancel-edit");
 let editingDate = null;
+const quotes = [
+    "You're one win away.",
+    "I can and I will.",
+    "Small steps still move you forward",
+    "Keep the promise you made to yourself.",
+    "Show up again.That's how change happens.",
+    "Today counts, event when it feels ordinary.",
+    "Aut viam inveniam aut faciam (I will either find a way or make one.)",
+    "Audentes fortuna iuvat (Fortune favors the bold.)"
+]
 
 function showCorrectScreen(){
     if(localStorage.getItem("why") === null){
@@ -34,6 +44,13 @@ function fillHome(){
     }
     showDaysLeft();
     showEntries();
+    showQuote();
+}
+
+function showQuote(){
+    const index = Math.floor(Math.random() * quotes.length);
+    const pick = quotes[index];
+    document.getElementById("quote").textContent = pick;
 }
 
 function showDate() {
