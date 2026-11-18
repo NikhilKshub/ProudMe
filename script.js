@@ -71,6 +71,22 @@ function formatDate(dateText){
         year:"numeric"
     });
 }
+
+function startEditing(savedEntry){
+    editingDate = savedEntry.date;
+    entry.value = savedEntry.text;
+    todayTitle.textContent = "Editing " + formatDate(savedEntry.date);
+    cancelButton.classList.remove("hidden");
+    entry.focus();
+}
+
+function stopEditing(){
+    editingDate = null;
+    entry.value = "";
+    todayTitle.textContent = "Today";
+    cancelButton.classList.add("hidden");
+}
+
 function getEntries(){
     const savedEntries = localStorage.getItem("entries");
     if(savedEntries === null){
@@ -96,29 +112,39 @@ form.addEventListener("submit", function (event) {
     showCorrectScreen();
 });
 
-
-saveButton.addEventListener("click", function(){
+saveButton.addEventListener("click",function(){
     const text = entry.value.trim();
     if(text === ""){
         return;
     }
+    let day = getToday();
+    if(editingDate !== null){
+        day = editingDate;
+    }
     const list = getEntries();
-    const today = getToday();
-    const todayEntry = list.find(function(savedEntry){
-        return savedEntry.date === today;
+    const foundEntry = list.find(function(savedEntry){
+        return savedEntry.date === day;
     });
-    if(todayEntry){
-        todayEntry.text = text;
+    if(foundEntry){
+        if(editingDate !== null){
+            foundEntry.text = text;
+        } else {
+            foundEntry.text = foundEntry.text + "\n" + text;
+        }
     } else {
-        list.push({date: today, text: text});
+        list.push({date: day, text: text});
     }
     saveEntries(list);
+    stopEditing();
     showEntries();
-    saveButton.textContent = "Saved";
+    saveButton.textContent = "Saved!";
     setTimeout(function(){
         saveButton.textContent = "Save";
     },1500);
 });
+
+
+cancelButton.addEventListener("click", stopEditing);
 
 function showTodaysEntry(){
     const list = getEntries();
