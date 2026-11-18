@@ -174,10 +174,27 @@ summary{
     text-transform: none;
     letter-spacing: 0;
 }
-#cancel-edit{margin-left:12px;}
+#cancel-edit {margin-left: 12px;}
 
 .edit-button:hover, #cancel-edit:hover {
     background: none;
     color: var(--orange);
     text-decoration:underline;
 }
+
+.entry{
+    padding: 20px 0;
+    border-bottom:1px solid var(--line);
+}
+
+.entry-date{
+    color:var(--orange);
+    font-weight: 500;
+    font-size:0.85rem;
+}
+
+.entry-text {
+    margin-top: 6px;
+    white-space: pre-wrap;
+}
+#letter-text {white-space: pre-wrap;}
